@@ -7,7 +7,7 @@ public abstract class Dice {
 	
 	public int roll() {
 		Random r = new Random();
-		return r.nextInt(size + 1);
+		return r.nextInt(size) + 1;
 	}
 
 }
