@@ -2,7 +2,6 @@ package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import application.dice.D10;
 import application.dice.D100;
 import application.dice.D12;
@@ -18,12 +17,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 
+//Look! A lot of comments!
+
 public class Controller implements Initializable {
 	@FXML
 	RadioButton d4, d6, d8, d10, d12, d20, d100;
 	@FXML
 	Label roller;
-	
+	//More!
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		final ToggleGroup group = new ToggleGroup();
@@ -36,7 +37,7 @@ public class Controller implements Initializable {
 		d20.setToggleGroup(group);
 		d100.setToggleGroup(group);	
 	}
-
+//Even More!
 	public void roll(ActionEvent clicked) {
 		Dice die;
 		if (d4.isSelected()) die = new D4();
