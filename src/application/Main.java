@@ -12,7 +12,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+			AnchorPane root = FXMLLoader.load(getClass().getResource("BetterGUI.fxml"));
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setTitle("Diceroller");
 			primaryStage.show();

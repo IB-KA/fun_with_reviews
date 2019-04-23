@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.dice.D10;
@@ -14,8 +15,11 @@ import application.dice.Dice;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 public class Controller implements Initializable {
@@ -23,6 +27,8 @@ public class Controller implements Initializable {
 	RadioButton d4, d6, d8, d10, d12, d20, d100;
 	@FXML
 	Label roller;
+	@FXML
+	TextField times;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -46,7 +52,22 @@ public class Controller implements Initializable {
 		else if (d12.isSelected()) die = new D12();
 		else if (d20.isSelected()) die = new D20();
 		else die = new D100();
-		int result = die.roll();
-		roller.setText("You rolled a "+result);
+		if (times.getText().matches("^[1-9]\\d*$") ) {
+		int repeat = Integer.parseInt(times.getText());	
+		String show = "You rolled:";
+		int sum = 0;
+		for (int i = 0; i < repeat; i++) {
+			int result = die.roll();
+			sum = sum + result;
+			show = show + " " + result;
+		}
+		roller.setText(show + " Sum: " + sum);
+		}else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("An error has occured.");
+			alert.setContentText("You did not enter a correct number.");
+			alert.showAndWait();
+		}
 	}
 }
